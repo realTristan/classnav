@@ -1,4 +1,4 @@
-export default function GradientTitle() {
+export default function GradientHeader() {
   return (
     <header className="flex flex-col items-center justify-center text-center lg:w-1/2">
       <h2 className="text-8xl font-black text-white">
