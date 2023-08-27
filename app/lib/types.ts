@@ -13,7 +13,6 @@ export interface Room {
   type: string;
   short: string;
   href: string;
-  image: string;
   info: RoomInfo;
   steps: Step[];
 }

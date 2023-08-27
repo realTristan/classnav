@@ -16,11 +16,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-20">
       <GradientHeader />
-      <GradientSearchBar />
+      <GradientSearchBar results={results} setResults={setResults} />
       <GithubRef />
       <ClassfindRef />
       <ScrollIndicator />
-      <div className="mx-6 mt-12 grid grid-cols-2 items-center justify-center gap-6 lg:m-12 lg:flex lg:flex-wrap lg:gap-12">
+      <div className="mx-6 mt-12 flex flex-wrap items-center justify-center gap-6 lg:m-12 lg:gap-12">
         {results &&
           results.map((value: Building) => (
             <GradientCard key={Math.random()} {...value} />
