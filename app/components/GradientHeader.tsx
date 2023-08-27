@@ -7,14 +7,22 @@ export default function GradientHeader() {
           Nav&nbsp;
         </mark>
       </h2>
-      <p className="mt-3 font-medium text-white">
-        The easiest,&nbsp;
-        <mark className="bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-bold italic tracking-wide text-transparent">
+      <p className="mt-3 font-medium tracking-wider text-white">
+        The{" "}
+        <mark className="bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text italic tracking-wide text-transparent">
+          easiest
+        </mark>
+        ,&nbsp;
+        <mark className="bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text italic tracking-wide text-transparent">
           modern
         </mark>
-        , and most accessible way to navigate your classes. Start by searching
-        for a building, room, or class. Below are links to common websites such
-        as the UofGuelph Homepage, GryphMail, CourseLink, Subreddit, and more.
+        , and{" "}
+        <mark className="bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text italic tracking-wide text-transparent">
+          most efficient
+        </mark>{" "}
+        way to navigate your classes. Start by searching for a building, room,
+        or class. Below are links to common websites such as the UofGuelph
+        Homepage, GryphMail, CourseLink, Subreddit, and more.
       </p>
     </header>
   );

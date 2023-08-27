@@ -1,33 +1,4 @@
-import { Room, Building } from "./types";
-
-export const ROOMS: {
-  [key: string]: Room;
-} = {
-  ALEX100: {
-    name: "Alexander Hall - Room 100",
-    type: "Room",
-    short: "ALEX100",
-    href: "/rooms/ALEX100",
-    image: "/images/rooms/ALEX100.jpg",
-    info: {
-      type: "Lecture Theatre",
-      seating: "Fixed Chairs with Tablets",
-      capacity: 182,
-    },
-  },
-  ALEX200: {
-    name: "Alexander Hall - Room 200",
-    type: "Room",
-    short: "ALEX200",
-    href: "/rooms/ALEX200",
-    image: "/images/rooms/ALEX200.jpg",
-    info: {
-      type: "Lecture Theatre",
-      seating: "Fixed Chairs with Tablets",
-      capacity: 322,
-    },
-  },
-};
+import { Building } from "../types";
 
 export const BUILDINGS: {
   [key: string]: Building;

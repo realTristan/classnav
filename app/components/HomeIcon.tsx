@@ -4,7 +4,7 @@ export default function HomeIcon() {
   return (
     <Link
       href="/"
-      className="group fixed left-8 top-8 rounded-lg p-4 hover:bg-slate-900"
+      className="group fixed left-8 top-8 rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
     >
       <svg
         version="1.1"

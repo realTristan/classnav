@@ -3,6 +3,11 @@ interface RoomInfo {
   seating: string;
   capacity: number;
 }
+export interface Step {
+  description: string;
+  image: string;
+}
+
 export interface Room {
   name: string;
   type: string;
@@ -10,6 +15,7 @@ export interface Room {
   href: string;
   image: string;
   info: RoomInfo;
+  steps: Step[];
 }
 
 export interface Building {
@@ -19,9 +25,4 @@ export interface Building {
   short: string;
   href: string;
   rooms: string[]; // Room names
-}
-
-export interface Step {
-  description: string;
-  image: string;
 }

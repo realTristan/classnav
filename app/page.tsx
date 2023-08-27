@@ -7,7 +7,7 @@ import GradientHeader from "./components/GradientHeader";
 import GradientSearchBar from "./components/GradientSearchBar";
 import ClassfindRef from "./components/ClassfindRef";
 import { Building } from "./lib/types";
-import { BUILDINGS } from "./lib/constants";
+import { BUILDINGS } from "./lib/constants/buildings";
 import ScrollIndicator from "./components/ScrollIndicator";
 
 export default function Home() {
