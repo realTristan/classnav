@@ -4,7 +4,7 @@ export const ROOMS: {
   [key: string]: Room;
 } = {
   ALEX100: {
-    name: "Alexander Hall - Room 100",
+    name: "ALEX 100",
     type: "Room",
     short: "ALEX100",
     href: "/rooms/ALEX100",
@@ -60,7 +60,7 @@ export const ROOMS: {
     ],
   },
   ALEX200: {
-    name: "Alexander Hall - Room 200",
+    name: "ALEX 200",
     type: "Room",
     short: "ALEX200",
     href: "/rooms/ALEX200",

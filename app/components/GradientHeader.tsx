@@ -21,7 +21,7 @@ export default function GradientHeader() {
           most efficient
         </mark>{" "}
         way to navigate your classes. Start by searching for a building, room,
-        or class. Below are links to common websites such as the UofGuelph
+        or class. To the side are links to common websites such as the UofGuelph
         Homepage, GryphMail, CourseLink, Subreddit, and more.
       </p>
     </header>
