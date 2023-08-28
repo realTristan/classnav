@@ -46,7 +46,7 @@ export default function BuildingsPage() {
             {building.address}
           </mark>
         </p>
-        <div className="mx-6 mt-12 flex flex-wrap items-center justify-center gap-6 lg:m-12 lg:gap-12">
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:gap-12">
           {building.rooms.map((roomName: string) => (
             <GradientCard
               key={Math.random()}

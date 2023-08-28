@@ -66,20 +66,20 @@ export default function RoomsPage() {
             {(roomInfo && roomInfo.capacity) || "Unknown"}
           </mark>
         </p>
-        <span className="relative mt-9 h-1 w-1/2 rounded-xl bg-gradient-to-br from-blue-600 to-violet-700 duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:rounded-xl before:bg-gradient-to-br before:from-blue-600 before:to-indigo-500 before:blur-sm before:duration-300 before:ease-in-out hover:bg-gradient-to-tr hover:before:bg-gradient-to-tr hover:before:blur-md sm:w-72 lg:w-[28rem]"></span>
+        <span className="relative my-9 h-1 w-1/2 rounded-xl bg-gradient-to-br from-blue-600 to-violet-700 duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:rounded-xl before:bg-gradient-to-br before:from-blue-600 before:to-indigo-500 before:blur-sm before:duration-300 before:ease-in-out hover:bg-gradient-to-tr hover:before:bg-gradient-to-tr hover:before:blur-md sm:w-72 lg:w-[28rem]"></span>
         <div className="mx-6 flex flex-wrap items-center justify-center gap-6">
           {steps.value.map((step: Step, i: number) => {
             return (
               <div
                 key={Math.random()}
-                className="flex w-[28rem] flex-col items-center justify-center"
+                className="flex h-[28rem] w-[28rem] flex-col items-center justify-center rounded-lg bg-slate-900 p-8"
               >
                 <Image
                   src={step.image}
                   alt="..."
                   width={1920}
                   height={1080}
-                  className="mx-12 mb-6 mt-12 h-80 w-96 cursor-pointer rounded-lg hover:brightness-50"
+                  className="mb-6 h-80 w-96 cursor-pointer rounded-lg hover:brightness-50"
                 />
                 <p className="text-center font-semibold tracking-wider text-white">
                   <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
