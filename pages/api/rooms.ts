@@ -60,7 +60,7 @@ const exractSteps = async ($: CheerioAPI) => {
   for (let i = 0; i < descriptions.length; i++) {
     result.push({
       description: descriptions[i],
-      image: "https://classfind.com/" + images[i],
+      image: "https://classfind.com" + images[i],
     });
   }
 
