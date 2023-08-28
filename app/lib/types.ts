@@ -1,9 +1,14 @@
-interface RoomInfo {
+import { Dispatch, SetStateAction } from "react";
+
+export type SetState<T> = Dispatch<SetStateAction<T>>;
+
+export interface RoomInfo {
   type: string;
   seating: string;
   capacity: number;
 }
 export interface Step {
+  step: string;
   description: string;
   image: string;
 }
@@ -13,8 +18,7 @@ export interface Room {
   type: string;
   short: string;
   href: string;
-  info: RoomInfo;
-  steps: Step[];
+  info?: RoomInfo;
 }
 
 export interface Building {
@@ -23,5 +27,6 @@ export interface Building {
   image: string;
   short: string;
   href: string;
+  address: string;
   rooms: string[]; // Room names
 }

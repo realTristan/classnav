@@ -1,12 +1,11 @@
 import Fuse from "fuse.js";
 import { BUILDINGS } from "../lib/constants/buildings";
-import { ROOMS } from "../lib/constants/rooms";
 import { Building, Room } from "../lib/types";
 import { useState } from "react";
+import { ObjectState } from "../lib/state";
 
 interface GradientSearchBarProps {
-  results: any;
-  setResults: any;
+  results: ObjectState<(Building | Room)[]>;
 }
 export default function GradientSearchBar(props: GradientSearchBarProps) {
   const [duration, setDuration] = useState<number>(0);
@@ -17,7 +16,7 @@ export default function GradientSearchBar(props: GradientSearchBarProps) {
         <input
           onChange={(e) => {
             const value: string = e.target.value;
-            if (!value) return props.setResults(Object.values(BUILDINGS));
+            if (!value) return props.results.set(Object.values(BUILDINGS));
 
             const startTime: number = new Date().getMilliseconds();
             const result = fuzzySearch(value);
@@ -25,55 +24,55 @@ export default function GradientSearchBar(props: GradientSearchBarProps) {
 
             setDuration(endTime - startTime);
 
-            props.setResults(result.map((result) => result.item));
+            props.results.set(result);
           }}
           placeholder="Search"
           className="m-0.5 h-12 w-96 rounded-xl bg-slate-950 p-4 tracking-wide text-slate-400 ring-0 placeholder:text-slate-400 focus:outline-none focus:ring-0"
         />
       </div>
       <p className="ml-1 mt-2 text-slate-500">
-        Found {props.results.length} results in {duration}ms
+        Found {props.results.value.length} results in {duration}ms
       </p>
     </div>
   );
 }
 
-/**
- * Get the agents that match the query
- * @param agents The agents to search through
- * @param query The query to search for
- * @returns The agents that match the query
- */
-const fuzzySearch = (query: string) => {
-  type Result<T> = Fuse.FuseResult<T>[];
+const fuzzySearch = (query: string): (Building | Room)[] => {
+  const buildings = fuzzySearchBuildings(query);
+  const rooms = fuzzySearchRooms(query);
 
-  const buildingsResult: Result<Building> = buildingsFuzzySearch(query);
-  const roomsResult: Result<Room> = roomsFuzzySearch(query);
-
-  return [...buildingsResult, ...roomsResult];
+  return [...buildings, ...rooms].map((result) => result.item);
 };
 
-const buildingsFuzzySearch = (query: string) => {
-  const values = Object.values(BUILDINGS);
+const fuzzySearchBuildings = (query: string) => {
+  const values: Building[] = Object.values(BUILDINGS);
 
   const fuse = new Fuse(values, {
-    keys: ["name", "type", "short", "rooms"],
+    keys: ["name", "type", "short"],
   });
+
   return fuse.search(query);
 };
 
-const roomsFuzzySearch = (query: string) => {
-  const values: Room[] = Object.values(ROOMS);
+const fuzzySearchRooms = (query: string) => {
+  const buildings: Building[] = Object.values(BUILDINGS);
 
-  const fuse = new Fuse(values, {
-    keys: [
-      "name",
-      "type",
-      "short",
-      "info.seating",
-      "info.capacity",
-      "info.type",
-    ],
+  // Iterate over the buildings and add the rooms to the array
+  let rooms: Room[] = [];
+  buildings.forEach((building: Building) => {
+    rooms.push(
+      ...building.rooms.map((roomName: string) => ({
+        name: roomName,
+        short: roomName,
+        href: `/rooms/${roomName}`,
+        type: "Room",
+      })),
+    );
   });
+
+  const fuse = new Fuse(rooms, {
+    keys: ["name"],
+  });
+
   return fuse.search(query);
 };

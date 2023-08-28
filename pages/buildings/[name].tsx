@@ -1,8 +1,7 @@
 import { BUILDINGS } from "@/app/lib/constants/buildings";
-import { ROOMS } from "@/app/lib/constants/rooms";
 import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
-import { Building, Room } from "@/app/lib/types";
+import { Building } from "@/app/lib/types";
 import "@/app/globals.css";
 import GradientCard from "@/app/components/GradientCard";
 import GithubRef from "@/app/components/GithubRef";
@@ -23,7 +22,7 @@ export default function BuildingsPage() {
   return (
     <>
       <Head>
-        <title>Buildings | ClassNav</title>
+        <title>{building.name} | ClassNav</title>
       </Head>
       <main className="flex min-h-screen flex-col items-center p-20">
         <GithubRef />
@@ -39,20 +38,23 @@ export default function BuildingsPage() {
           alt="..."
           width={1920}
           height={1080}
-          className="m-12 w-96 cursor-pointer rounded-lg hover:brightness-50"
+          className="mx-12 mt-12 w-96 cursor-pointer rounded-lg hover:brightness-50"
         />
+        <p className="mb-12 mt-6 font-semibold tracking-wide text-white">
+          Address:{" "}
+          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+            {building.address}
+          </mark>
+        </p>
         <div className="mx-6 grid grid-cols-2 items-center justify-center gap-6 lg:flex lg:flex-wrap lg:gap-12">
-          {building.rooms.map((roomName: string) => {
-            const room: Room = ROOMS[roomName];
-            return (
-              <GradientCard
-                key={Math.random()}
-                name={room.name}
-                href={room.href}
-                type={room.type}
-              />
-            );
-          })}
+          {building.rooms.map((roomName: string) => (
+            <GradientCard
+              key={Math.random()}
+              name={roomName}
+              href={`/rooms/${roomName}`}
+              type={"Room"}
+            />
+          ))}
         </div>
       </main>
     </>
