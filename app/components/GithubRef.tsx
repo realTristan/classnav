@@ -5,7 +5,7 @@ export default function GithubRef() {
     <Link
       target="_blank"
       href="https://github.com/realTristan"
-      className="fixed bottom-24 left-7 z-10 flex flex-row rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
+      className="xs:bottom-24 xs:left-7 xs:scale-100 fixed -left-12 bottom-12 z-10 flex scale-50 flex-row rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -82,7 +82,7 @@ export default function RoomsPage() {
                   alt="..."
                   width={1920}
                   height={1080}
-                  className="m-12 h-80 w-96 cursor-pointer rounded-lg hover:brightness-50"
+                  className="mx-12 mb-6 mt-12 h-80 w-96 cursor-pointer rounded-lg hover:brightness-50"
                 />
                 <p className="text-center font-semibold tracking-wider text-white">
                   <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">

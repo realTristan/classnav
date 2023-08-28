@@ -5,7 +5,7 @@ export default function ClassfindRef() {
     <Link
       target="_blank"
       href="https://classfind.com/guelph"
-      className="fixed bottom-7 left-7 z-10 flex flex-row rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
+      className="xs:bottom-7 xs:left-7 xs:scale-100 fixed -left-14 bottom-4 z-10 flex scale-50 flex-row rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
     >
       <svg
         version="1.0"
