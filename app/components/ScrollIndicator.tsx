@@ -21,7 +21,7 @@ export default function ScrollIndicator(): JSX.Element {
 
   // Return the component jsx
   return (
-    <div className="fixed bottom-0 z-50 h-4 w-screen bg-slate-900">
+    <div className="fixed top-0 z-50 h-4 w-screen bg-slate-900">
       <div
         className="fixed top-0 h-4 border-r-4 bg-gradient-to-r from-blue-600 to-violet-700 ease-in-out"
         style={{ width: `${scrollPercent}%` }}
