@@ -60,7 +60,7 @@ export const getMiddlewares = (
  * Middlewares to limit the number of requests
  */
 export const middlewares = () => {
-  const global: any = globalThis;
+  const global: any = globalThis as any;
   return global.getMiddlewares();
 };
 
@@ -68,11 +68,11 @@ export const middlewares = () => {
  * Middleware to limit the number of requests
  */
 export const rateLimited = async (req: any, res: any) => {
-  const global: any = globalThis;
+  const global: any = globalThis as any;
   return await global.rateLimited(req, res);
 };
 
-const global: any = globalThis;
+const global: any = globalThis as any;
 if (!global.rateLimited) {
   const middlewares = getMiddlewares({ limit: 10, delayMs: 0 }).map(
     applyMiddleware,
