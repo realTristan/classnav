@@ -41,7 +41,7 @@ export default function RoomsPage() {
   return (
     <>
       <Head>
-        <title>{room.name} | ClassNav</title>
+        <title>Rooms | ClassNav</title>
       </Head>
       <main className="flex min-h-screen flex-col items-center p-20">
         <GithubRef />
