@@ -11,6 +11,13 @@ import { useEffect } from "react";
 import { ObjectState } from "@/app/lib/state";
 import { ROOM_INFOS } from "@/app/lib/constants/rooms";
 import LoadingCenter from "@/app/components/Loading";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  style: ["normal"],
+  weight: ["400", "700", "800"],
+  subsets: ["latin-ext"],
+});
 
 export default function RoomsPage() {
   // Get the room name
@@ -40,7 +47,9 @@ export default function RoomsPage() {
       <Head>
         <title>Rooms | ClassNav</title>
       </Head>
-      <main className="flex min-h-screen flex-col items-center p-20">
+      <main
+        className={`flex min-h-screen flex-col items-center p-20 ${poppins.className}`}
+      >
         <GithubRef />
         <ClassfindRef />
         <ScrollIndicator />
@@ -50,19 +59,19 @@ export default function RoomsPage() {
         </h2>
         <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Type:{" "}
-          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-normal tracking-wide text-transparent">
             {(roomInfo && roomInfo.type) || "Unknown"}
           </mark>
         </p>
         <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Seating Style:{" "}
-          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-normal tracking-wide text-transparent">
             {(roomInfo && roomInfo.seating) || "Unknown"}
           </mark>
         </p>
         <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Capacity:{" "}
-          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-normal tracking-wide text-transparent">
             {(roomInfo && roomInfo.capacity) || "Unknown"}
           </mark>
         </p>
@@ -81,8 +90,8 @@ export default function RoomsPage() {
                   height={1080}
                   className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
                 />
-                <p className="text-center text-xs font-semibold tracking-wider text-white xs:text-sm sm:text-base">
-                  <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+                <p className="text-center text-xs font-normal tracking-wider text-white xs:text-sm sm:text-base">
+                  <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-semibold tracking-wide text-transparent">
                     Step {i + 1}
                   </mark>{" "}
                   {step.description}

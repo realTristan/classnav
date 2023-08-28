@@ -9,6 +9,13 @@ import ClassfindRef from "@/app/components/ClassfindRef";
 import ScrollIndicator from "@/app/components/ScrollIndicator";
 import HomeIcon from "@/app/components/HomeIcon";
 import Head from "next/head";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  style: ["normal"],
+  weight: ["400", "700", "800"],
+  subsets: ["latin-ext"],
+});
 
 export default function BuildingsPage() {
   const router: NextRouter = useRouter();
@@ -24,7 +31,9 @@ export default function BuildingsPage() {
       <Head>
         <title>Buildings | ClassNav</title>
       </Head>
-      <main className="flex min-h-screen flex-col items-center p-20">
+      <main
+        className={`flex min-h-screen flex-col items-center p-20 ${poppins.className}`}
+      >
         <GithubRef />
         <ClassfindRef />
         <ScrollIndicator />
@@ -42,7 +51,7 @@ export default function BuildingsPage() {
         />
         <p className="mt-6 text-center font-semibold tracking-wide text-white">
           Address:{" "}
-          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
+          <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-normal tracking-wide text-transparent">
             {building.address}
           </mark>
         </p>
