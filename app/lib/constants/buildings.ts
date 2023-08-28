@@ -119,7 +119,7 @@ export const BUILDINGS: {
     type: "Building",
     short: "MACK",
     address: "87 Trent Ln, Guelph, ON N1G 1Y4",
-    image: "/images/buildings/MACK",
+    image: "/images/buildings/MACK.jpg",
     href: "/buildings/MACK",
     rooms: [
       "MACK016",
