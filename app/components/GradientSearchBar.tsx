@@ -27,7 +27,7 @@ export default function GradientSearchBar(props: GradientSearchBarProps) {
             props.results.set(result);
           }}
           placeholder="Search"
-          className="m-0.5 h-12 w-96 rounded-xl bg-slate-950 p-4 tracking-wide text-slate-400 ring-0 placeholder:text-slate-400 focus:outline-none focus:ring-0"
+          className="m-0.5 h-12 rounded-xl bg-slate-950 p-4 tracking-wide text-slate-400 ring-0 placeholder:text-slate-400 focus:outline-none focus:ring-0 sm:w-96"
         />
       </div>
       <p className="ml-1 mt-2 text-slate-500">
