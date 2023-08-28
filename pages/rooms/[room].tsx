@@ -45,22 +45,22 @@ export default function RoomsPage() {
         <ClassfindRef />
         <ScrollIndicator />
         <HomeIcon />
-        <h2 className="mb-4 text-center text-8xl font-black tracking-wide text-white">
+        <h2 className="mb-4 text-center text-6xl font-black tracking-wide text-white md:text-8xl">
           {roomName}&nbsp;
         </h2>
-        <p className="font-semibold tracking-wide text-white">
+        <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Type:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
             {(roomInfo && roomInfo.type) || "Unknown"}
           </mark>
         </p>
-        <p className="font-semibold tracking-wide text-white">
+        <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Seating Style:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
             {(roomInfo && roomInfo.seating) || "Unknown"}
           </mark>
         </p>
-        <p className="font-semibold tracking-wide text-white">
+        <p className="text-center text-xs font-semibold tracking-wide text-white xs:text-sm sm:text-base">
           Room Capacity:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
             {(roomInfo && roomInfo.capacity) || "Unknown"}
@@ -72,7 +72,7 @@ export default function RoomsPage() {
             return (
               <div
                 key={Math.random()}
-                className="flex h-[28rem] w-[28rem] flex-col items-center justify-center rounded-lg bg-slate-900 p-8"
+                className="flex h-72 w-72 flex-col items-center justify-center rounded-lg bg-slate-900 p-4 xs:h-80 xs:w-80 xs:p-8 sm:h-[28rem] sm:w-[28rem]"
               >
                 <Image
                   src={step.image}
@@ -81,7 +81,7 @@ export default function RoomsPage() {
                   height={1080}
                   className="mb-6 h-80 w-96 cursor-pointer rounded-lg hover:brightness-50"
                 />
-                <p className="text-center font-semibold tracking-wider text-white">
+                <p className="text-center text-xs font-semibold tracking-wider text-white xs:text-sm sm:text-base">
                   <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
                     Step {i + 1}
                   </mark>{" "}

@@ -5,14 +5,14 @@ export default function ClassfindRef() {
     <Link
       target="_blank"
       href="https://classfind.com/guelph"
-      className="xs:bottom-7 xs:left-7 xs:scale-100 fixed -left-14 bottom-4 z-10 flex scale-50 flex-row rounded-lg bg-slate-950 p-4 hover:bg-slate-900"
+      className="fixed bottom-4 left-4 z-10 flex flex-row rounded-lg border-2 border-white bg-slate-950 p-3 hover:bg-slate-900 xs:bottom-7 xs:left-7 xs:p-4"
     >
       <svg
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1280.000000 1280.000000"
         preserveAspectRatio="xMidYMid meet"
-        className="mr-3 h-5 w-5 -rotate-45 scale-x-[-1] fill-white"
+        className="mr-2 h-3 w-3 -rotate-45 scale-x-[-1] fill-white xs:mr-3 xs:h-5 xs:w-5"
       >
         <g
           transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
@@ -29,7 +29,7 @@ export default function ClassfindRef() {
           />
         </g>
       </svg>
-      <p className="text-white">
+      <p className="text-xs text-white xs:text-base">
         Data provided by&nbsp;
         <mark className="bg-transparent bg-gradient-to-r from-blue-600 to-violet-700 bg-clip-text italic text-transparent">
           classfind&nbsp;
