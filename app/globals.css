@@ -5,3 +5,11 @@
 body {
   background-color: #020617;
 }
+
+::-moz-selection {
+  background: #8b5cf6;
+}
+
+::selection {
+  background: #8b5cf6;
+}
