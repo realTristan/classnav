@@ -74,7 +74,7 @@ export const rateLimited = async (req: any, res: any) => {
 
 const global: any = globalThis;
 if (!global.rateLimited) {
-  const middlewares = getMiddlewares({ limit: 20, delayMs: 0 }).map(
+  const middlewares = getMiddlewares({ limit: 10, delayMs: 0 }).map(
     applyMiddleware,
   );
 
