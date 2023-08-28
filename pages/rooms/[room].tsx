@@ -5,11 +5,12 @@ import ScrollIndicator from "@/app/components/ScrollIndicator";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
-import { Room, Step } from "@/app/lib/types";
+import { RoomInfo, Step } from "@/app/lib/types";
 import "@/app/globals.css";
 import { useEffect } from "react";
 import { ObjectState } from "@/app/lib/state";
 import { ROOM_INFOS } from "@/app/lib/constants/rooms";
+import LoadingCenter from "@/app/components/Loading";
 
 export default function RoomsPage() {
   // Get the room name
@@ -25,18 +26,14 @@ export default function RoomsPage() {
     fetch(`/api/rooms/?q=${roomName}`).then(async (res) => {
       if (res.ok) {
         let json = await res.json();
-        if (json.result.length) steps.set(json.result);
+        steps.set(json.result);
       }
     });
   });
 
-  const room: Room = {
-    name: roomName,
-    href: `/rooms/${roomName}`,
-    type: "Room",
-    short: roomName,
-    info: ROOM_INFOS[roomName],
-  };
+  if (!steps.updated) return <LoadingCenter />;
+
+  const roomInfo: RoomInfo | undefined = ROOM_INFOS[roomName];
 
   return (
     <>
@@ -49,24 +46,24 @@ export default function RoomsPage() {
         <ScrollIndicator />
         <HomeIcon />
         <h2 className="mb-4 text-center text-8xl font-black tracking-wide text-white">
-          {room.name}&nbsp;
+          {roomName}&nbsp;
         </h2>
         <p className="font-semibold tracking-wide text-white">
           Room Type:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
-            {(room.info && room.info.type) || "Unknown"}
+            {(roomInfo && roomInfo.type) || "Unknown"}
           </mark>
         </p>
         <p className="font-semibold tracking-wide text-white">
           Room Seating Style:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
-            {(room.info && room.info.seating) || "Unknown"}
+            {(roomInfo && roomInfo.seating) || "Unknown"}
           </mark>
         </p>
         <p className="font-semibold tracking-wide text-white">
           Room Capacity:{" "}
           <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text tracking-wide text-transparent">
-            {(room.info && room.info.capacity) || "Unknown"}
+            {(roomInfo && roomInfo.capacity) || "Unknown"}
           </mark>
         </p>
         <span className="relative mt-9 h-1 w-1/2 rounded-xl bg-gradient-to-br from-blue-600 to-violet-700 duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:rounded-xl before:bg-gradient-to-br before:from-blue-600 before:to-indigo-500 before:blur-sm before:duration-300 before:ease-in-out hover:bg-gradient-to-tr hover:before:bg-gradient-to-tr hover:before:blur-md sm:w-72 lg:w-[28rem]"></span>
