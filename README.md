@@ -2,8 +2,31 @@
 <img width="986" alt="Screenshot 2023-08-27 at 8 02 43 PM" src="https://github.com/realTristan/classnav/assets/75189508/c01fbc60-73c9-41b4-8c4b-a2d4b61f3394">
 
 # API
-The API is free-to-use https://classnav.vercel.app/api/rooms?q=ALEX100
+### Free
+```
+https://classnav.vercel.app/api/rooms?q=ALEX100
+```
 
+### Example Response
+```json
+{
+  "message": "ok",
+  "result": [
+    {
+      "description": "Walk from the Cannon to Reynolds Walk",
+      "image": "https://classfind.com/guelph/small/cannonstart31.jpg"
+    },
+    {
+      "description": "Walk down Reynolds Walk.",
+      "image": "https://classfind.com/guelph/small/cannonstart34.jpg"
+    },
+    {
+      "description": "Keep walking straight.",
+      "image": "https://classfind.com/guelph/small/cannonstart35.jpg"
+    },
+  ]
+}
+```
 # License
 MIT License
 
