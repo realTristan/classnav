@@ -15,7 +15,7 @@ export default function ScrollIndicator(): JSX.Element {
       const height: number =
         document.documentElement.scrollHeight -
         document.documentElement.clientHeight;
-      setScrollPercent((_) => (winScroll / height) * 100);
+      setScrollPercent((winScroll / height) * 100);
     });
   }, []);
 
