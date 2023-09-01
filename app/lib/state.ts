@@ -14,7 +14,7 @@ export interface ReactObjectState<T> {
   updated: boolean;
   set: (value: T) => void;
   // private readonly _set: SetState<T>;
-  // private readonly setUpdated: SetState<boolean>;
+  // private readonly setUpdated: SetState<boolean>; //
 }
 
 /**
