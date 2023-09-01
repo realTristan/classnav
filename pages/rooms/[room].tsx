@@ -7,11 +7,12 @@ import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
 import { RoomInfo, Step } from "@/app/lib/types";
 import "@/app/globals.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ObjectState } from "@/app/lib/state";
 import { ROOM_INFOS } from "@/app/lib/constants/rooms";
 import LoadingCenter from "@/app/components/Loading";
 import { Poppins } from "next/font/google";
+import LocationModal from "@/app/components/LocationModal";
 
 const poppins = Poppins({
   style: ["normal"],
@@ -19,10 +20,22 @@ const poppins = Poppins({
   subsets: ["latin-ext"],
 });
 
+interface RoomObj {
+  img: string;
+  description: string;
+  step: number;
+}
+
 export default function RoomsPage() {
   // Get the room name
   const router: NextRouter = useRouter();
   const roomName: string = (router.query.room || "") as string;
+
+  // modal for each location
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  //active room
+  const [activeRoom, setActiveRoom] = useState<RoomObj | null>(null);
 
   // Get the room navigation steps
   const steps = new ObjectState<Step[]>([]);
@@ -83,13 +96,15 @@ export default function RoomsPage() {
                 key={Math.random()}
                 className="flex h-72 w-72 flex-col items-center justify-center rounded-lg bg-slate-900 p-4 xs:h-80 xs:w-80 xs:p-8 sm:h-[28rem] sm:w-[28rem]"
               >
-                <Image
-                  src={step.image}
-                  alt="..."
-                  width={1920}
-                  height={1080}
-                  className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
-                />
+                <div onClick={() => { setShowModal(true); setActiveRoom({ description: step.description, step: i + 1, img: step.image }) }}>
+                  <Image
+                    src={step.image}
+                    alt="..."
+                    width={1920}
+                    height={1080}
+                    className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
+                  />
+                </div>
                 <p className="text-center text-xs font-normal tracking-wider text-white xs:text-sm sm:text-base">
                   <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-semibold tracking-wide text-transparent">
                     Step {i + 1}
@@ -101,6 +116,7 @@ export default function RoomsPage() {
           })}
         </div>
       </main>
+      {showModal && activeRoom ? <LocationModal setShowModal={setShowModal} img={activeRoom?.img} description={activeRoom?.description} step={activeRoom?.step} /> : null}
     </>
   );
 }
