@@ -7,8 +7,9 @@ export interface RoomInfo {
   seating: string;
   capacity: number;
 }
+
 export interface Step {
-  step: string;
+  index?: number;
   description: string;
   image: string;
 }
