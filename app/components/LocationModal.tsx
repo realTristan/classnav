@@ -14,7 +14,7 @@ export default function LocationModal(props: LocationModalProps) {
     <div
       className="fixed left-0 top-0 z-[1055] flex h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-black/[0.77] outline-none"
       aria-modal="true"
-      onClick={() => props.setShowModal(false)}
+      onClick={() => props.setShowModal((_) => false)}
       role="dialog"
       tabIndex={-1}
     >
