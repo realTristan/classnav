@@ -7,11 +7,12 @@ import { NextRouter, useRouter } from "next/router";
 import Image from "next/image";
 import { RoomInfo, Step } from "@/app/lib/types";
 import "@/app/globals.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ObjectState } from "@/app/lib/state";
 import { ROOM_INFOS } from "@/app/lib/constants/rooms";
 import LoadingCenter from "@/app/components/Loading";
 import { Poppins } from "next/font/google";
+import LocationModal from "@/app/components/LocationModal";
 
 const poppins = Poppins({
   style: ["normal"],
@@ -19,10 +20,22 @@ const poppins = Poppins({
   subsets: ["latin-ext"],
 });
 
+interface RoomObj {
+  image: string;
+  description: string;
+  step: number;
+}
+
 export default function RoomsPage() {
   // Get the room name
   const router: NextRouter = useRouter();
   const roomName: string = (router.query.room || "") as string;
+
+  // modal for each location
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  //active room
+  const [activeRoom, setActiveRoom] = useState<RoomObj | null>(null);
 
   // Get the room navigation steps
   const steps = new ObjectState<Step[]>([]);
@@ -78,18 +91,31 @@ export default function RoomsPage() {
         <span className="relative mb-10 mt-6 h-1 w-1/2 rounded-xl bg-gradient-to-br from-blue-600 to-violet-700 duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:rounded-xl before:bg-gradient-to-br before:from-blue-600 before:to-indigo-500 before:blur-sm before:duration-300 before:ease-in-out hover:bg-gradient-to-tr hover:before:bg-gradient-to-tr hover:before:blur-md sm:w-72 lg:w-[28rem]"></span>
         <div className="mx-6 flex flex-wrap items-center justify-center gap-6">
           {steps.value.map((step: Step, i: number) => {
+            const currentStep: RoomObj = {
+              image: step.image,
+              description: step.description,
+              step: i + 1,
+            };
+
             return (
               <div
                 key={Math.random()}
                 className="flex h-72 w-72 flex-col items-center justify-center rounded-lg bg-slate-900 p-4 xs:h-80 xs:w-80 xs:p-8 sm:h-[28rem] sm:w-[28rem]"
               >
-                <Image
-                  src={step.image}
-                  alt="..."
-                  width={1920}
-                  height={1080}
-                  className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
-                />
+                <div
+                  onClick={() => {
+                    setShowModal((_) => true);
+                    setActiveRoom((_) => currentStep);
+                  }}
+                >
+                  <Image
+                    src={step.image}
+                    alt="..."
+                    width={1920}
+                    height={1080}
+                    className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
+                  />
+                </div>
                 <p className="text-center text-xs font-normal tracking-wider text-white xs:text-sm sm:text-base">
                   <mark className="mr-2 bg-transparent bg-gradient-to-br from-blue-600 to-violet-700 bg-clip-text font-semibold tracking-wide text-transparent">
                     Step {i + 1}
@@ -101,6 +127,14 @@ export default function RoomsPage() {
           })}
         </div>
       </main>
+      {showModal && activeRoom ? (
+        <LocationModal
+          setShowModal={setShowModal}
+          image={activeRoom?.image}
+          description={activeRoom?.description}
+          step={activeRoom?.step}
+        />
+      ) : null}
     </>
   );
 }

@@ -22,7 +22,7 @@ export default function GradientSearchBar(props: GradientSearchBarProps) {
             const result = fuzzySearch(value);
             const endTime: number = new Date().getMilliseconds();
 
-            setDuration(endTime - startTime);
+            setDuration((_) => endTime - startTime);
 
             props.results.set(result);
           }}
