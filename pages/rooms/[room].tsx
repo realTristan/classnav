@@ -21,7 +21,7 @@ const poppins = Poppins({
 });
 
 interface RoomObj {
-  img: string;
+  image: string;
   description: string;
   step: number;
 }
@@ -91,12 +91,23 @@ export default function RoomsPage() {
         <span className="relative mb-10 mt-6 h-1 w-1/2 rounded-xl bg-gradient-to-br from-blue-600 to-violet-700 duration-300 before:absolute before:left-0 before:top-0 before:-z-10 before:h-full before:w-full before:rounded-xl before:bg-gradient-to-br before:from-blue-600 before:to-indigo-500 before:blur-sm before:duration-300 before:ease-in-out hover:bg-gradient-to-tr hover:before:bg-gradient-to-tr hover:before:blur-md sm:w-72 lg:w-[28rem]"></span>
         <div className="mx-6 flex flex-wrap items-center justify-center gap-6">
           {steps.value.map((step: Step, i: number) => {
+            const currentStep: RoomObj = {
+              image: step.image,
+              description: step.description,
+              step: i + 1,
+            };
+
             return (
               <div
                 key={Math.random()}
                 className="flex h-72 w-72 flex-col items-center justify-center rounded-lg bg-slate-900 p-4 xs:h-80 xs:w-80 xs:p-8 sm:h-[28rem] sm:w-[28rem]"
               >
-                <div onClick={() => { setShowModal(true); setActiveRoom({ description: step.description, step: i + 1, img: step.image }) }}>
+                <div
+                  onClick={() => {
+                    setShowModal((_) => true);
+                    setActiveRoom((_) => currentStep);
+                  }}
+                >
                   <Image
                     src={step.image}
                     alt="..."
@@ -116,7 +127,14 @@ export default function RoomsPage() {
           })}
         </div>
       </main>
-      {showModal && activeRoom ? <LocationModal setShowModal={setShowModal} img={activeRoom?.img} description={activeRoom?.description} step={activeRoom?.step} /> : null}
+      {showModal && activeRoom ? (
+        <LocationModal
+          setShowModal={setShowModal}
+          image={activeRoom?.image}
+          description={activeRoom?.description}
+          step={activeRoom?.step}
+        />
+      ) : null}
     </>
   );
 }
