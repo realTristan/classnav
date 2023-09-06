@@ -84,7 +84,7 @@ export default function RoomsPage() {
           {steps.value.map((step: Step, i: number) => (
             <div
               key={Math.random()}
-              className="flex h-72 w-72 flex-col items-center justify-center rounded-lg bg-slate-900 p-4 xs:h-80 xs:w-80 xs:p-8 sm:h-[28rem] sm:w-[28rem]"
+              className="flex h-80 w-72 flex-col gap-4 rounded-lg bg-slate-900 p-4 xs:h-[21rem] xs:w-[21rem] xs:p-8 sm:h-[30rem] sm:w-[28rem] sm:gap-6"
             >
               <div onClick={() => activeStep.set(step)}>
                 <Image
@@ -92,7 +92,7 @@ export default function RoomsPage() {
                   alt="..."
                   width={1920}
                   height={1080}
-                  className="mb-6 h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
+                  className="h-52 w-72 cursor-pointer rounded-lg hover:brightness-50 sm:h-80 sm:w-96"
                 />
               </div>
               <p className="text-center text-xs font-normal tracking-wider text-white xs:text-sm sm:text-base">
